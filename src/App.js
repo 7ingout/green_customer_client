@@ -1,23 +1,47 @@
-import logo from './logo.svg';
 import './App.css';
-
+import CustomerList from './components/CustomerList';
+import DetailCustomer from './components/DetailCustomer';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import { Route, Routes } from "react-router-dom";
+import CreateCustomer from './components/CreateCustomer';
+const customers = [
+  {
+    no: 1,
+    name: "고객",
+    phone: "01012345678",
+    birth: "19920206",
+    gender: "여성",
+    add: "울산시 남구"
+  },
+  {
+    no: 2,
+    name: "그린",
+    phone: "01012345678",
+    birth: "19920206",
+    gender: "남성",
+    add: "울산시 동구"
+  },
+  {
+    no: 3,
+    name: "kh",
+    phone: "01012345678",
+    birth: "19920206",
+    gender: "여성",
+    add: "울산시 남구"
+  }
+]
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Routes>
+        {/* props로 위에 {customers}를 CustomerList로 전달 */}
+        <Route path="/" element={<CustomerList customers={customers}/>} />
+        <Route path="/detailview/:no" element={<DetailCustomer/>} />
+        <Route path="/write" element={<CreateCustomer/>} />
+      </Routes>
+      <Footer/>
     </div>
   );
 }
