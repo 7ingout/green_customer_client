@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { Table, TableBody, TableRow, TableCell } from '@mui/material';
 import PopupDom from "./PopupDom"
 import PopupPostCode from "./PopupPostCode"
+import axios from "axios";
+import { API_URL } from '../config/contansts';
+import { useNavigate } from 'react-router-dom';
 
 const CreateCustomer = () => {
     // 우편번호 관리하기
@@ -37,10 +40,38 @@ const CreateCustomer = () => {
             [name]: value
         })
     }
+    // 폼 submit 이벤트
+    const onSumbit = (e) => {
+        // form에 원래 연결된 이벤트를 제거
+        e.preventDefault();
+        console.log(formData);
+        // input에 값이 있는지 체크하고
+        // 입력이 다되어있으면 post전송
+        insertCustomer();
+    }
+    const navigate = useNavigate();
+    function insertCustomer(){
+        // axios.post(`${API_URL}/customers`, {
+        //     name: formData.c_name,
+        //     phone: formData.c_phone,
+        //     birth: formData.c_birth,
+        //     gender: formData.c_gender,
+        //     add1: formData.c_add,
+        //     add2: formData.c_adddetail
+        // })
+        axios.post(`${API_URL}/customers`, formData)
+        .then((result)=>{
+            console.log(result)
+            navigate("/");
+        })
+        .catch((e)=> {
+            console.log(e);   
+        })
+    }
     return (
         <div>
             <h2>신규 고객 등록하기</h2>
-            <form>
+            <form onSubmit={onSumbit}>
                 <Table>
                     <TableBody>
                         <TableRow>
