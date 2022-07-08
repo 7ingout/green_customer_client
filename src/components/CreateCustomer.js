@@ -45,9 +45,24 @@ const CreateCustomer = () => {
         // form에 원래 연결된 이벤트를 제거
         e.preventDefault();
         console.log(formData);
+
+        // 전화번호가 숫자인지 체크하기
+        if(isNaN(formData.c_phone)){
+            alert('전화번호는 숫자만 입력해주세요');
+            setFormData({
+                ...formData,
+                c_phone: ""
+            })
+        } 
         // input에 값이 있는지 체크하고
         // 입력이 다되어있으면 post전송
-        insertCustomer();
+        else if( formData.c_name !== "" && formData.c_phone !== "" && 
+        formData.c_birth !== "" && formData.c_gender !=="" &&
+        formData.c_add !== "" && formData.c_adddetail !== "" ){
+            insertCustomer();
+        } else {
+            alert('모든 항목을 기입해주세요');
+        }
     }
     const navigate = useNavigate();
     function insertCustomer(){
@@ -59,7 +74,7 @@ const CreateCustomer = () => {
         //     add1: formData.c_add,
         //     add2: formData.c_adddetail
         // })
-        axios.post(`${API_URL}/customers`, formData)
+        axios.post(`${API_URL}/addCustomer`, formData)
         .then((result)=>{
             console.log(result)
             navigate("/");

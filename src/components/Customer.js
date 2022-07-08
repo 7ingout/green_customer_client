@@ -10,8 +10,7 @@ const Customer = ( {customer} ) => {
                 <TableCell>{customer.phone}</TableCell>
                 <TableCell>{customer.birth}</TableCell>
                 <TableCell>{customer.gender}</TableCell>
-                <TableCell>{customer.add1}</TableCell>
-                <TableCell>{customer.add2}</TableCell>
+                <TableCell>{customer.add1}<br/>{customer.add2}</TableCell>
         </TableRow>
     );
 };

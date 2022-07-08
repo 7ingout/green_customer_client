@@ -27,7 +27,6 @@ const CustomerList = () => {
                         <TableCell>생년월일</TableCell>
                         <TableCell>성별</TableCell>
                         <TableCell>주소</TableCell>
-                        <TableCell>상세주소</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>

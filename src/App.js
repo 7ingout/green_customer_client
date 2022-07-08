@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import { Route, Routes } from "react-router-dom";
 import CreateCustomer from './components/CreateCustomer';
+import EditCustomer from './components/EditCustomer';
 const customers = [
   {
     no: 1,
@@ -40,6 +41,7 @@ function App() {
         <Route path="/" element={<CustomerList customers={customers}/>} />
         <Route path="/detailview/:no" element={<DetailCustomer/>} />
         <Route path="/write" element={<CreateCustomer/>} />
+        <Route path="/edit/:no" element={<EditCustomer/>} />
       </Routes>
       <Footer/>
     </div>
