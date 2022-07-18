@@ -6,6 +6,9 @@ import Header from './components/Header';
 import { Route, Routes } from "react-router-dom";
 import CreateCustomer from './components/CreateCustomer';
 import EditCustomer from './components/EditCustomer';
+import CustomerContainer from './components/CustomerContainer';
+
+import CreateCustomerContainer from './components/CreateCustomerContainer';
 const customers = [
   {
     no: 1,
@@ -38,10 +41,12 @@ function App() {
       <Header />
       <Routes>
         {/* props로 위에 {customers}를 CustomerList로 전달 */}
-        <Route path="/" element={<CustomerList customers={customers}/>} />
+        {/* <Route path="/" element={<CustomerList customers={customers}/>} /> */}
+        <Route path="/" element={<CustomerContainer/>} />
         <Route path="/detailview/:no" element={<DetailCustomer/>} />
-        <Route path="/write" element={<CreateCustomer/>} />
         <Route path="/edit/:no" element={<EditCustomer/>} />
+        {/* <Route path="/write" element={<CreateCustomer/>} /> */}
+        <Route path="/write" element={<CreateCustomerContainer/>} />
       </Routes>
       <Footer/>
     </div>
