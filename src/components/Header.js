@@ -27,6 +27,7 @@ const Header = () => {
                         <li>{uname}님 환영합니다!</li>
                         <li onClick={logoutClick}>로그아웃</li>
                         <li><Link to="/">회원정보수정</Link></li>
+                        <li><Link to="/gallery">이미지등록</Link></li>
                     </>
                 }
                 { isLogin || 
@@ -35,8 +36,7 @@ const Header = () => {
                         <li><Link to="/join">회원가입</Link></li>
                     </>
                 }
-
-                <li>고객 검색</li>
+                <li><Link to ="/galleryList">이미지보기</Link></li>
             </ul>
         </div>
     );

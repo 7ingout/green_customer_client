@@ -7,10 +7,15 @@ import { Route, Routes } from "react-router-dom";
 // import CreateCustomer from './components/CreateCustomer';
 import EditCustomer from './components/EditCustomer';
 import CustomerContainer from './components/CustomerContainer';
-
 import CreateCustomerContainer from './components/CreateCustomerContainer';
 import JoinForm from './components/JoinForm';
 import Login from './components/Login';
+import CreateGallery from './components/CreateGallery';
+import { useEffect } from 'react';
+import { getCookie } from './util/cookie';
+import { setLogin } from './modules/logincheck';
+import { useDispatch } from 'react-redux';
+import GalleryListContainer from './components/GalleryListContainer';
 // const customers = [
 //   {
 //     no: 1,
@@ -38,6 +43,13 @@ import Login from './components/Login';
 //   }
 // ]
 function App() {
+  const dispatch = useDispatch();
+  const uname= getCookie('username');
+  useEffect(()=>{
+    if(uname){
+      dispatch(setLogin())
+    }
+  },[])
   return (
     <div className="App">
       <Header />
@@ -51,6 +63,8 @@ function App() {
         <Route path="/write" element={<CreateCustomerContainer/>} />
         <Route path="/join" element={<JoinForm />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/gallery" element={<CreateGallery/>}/>
+        <Route path="/gallerylist" element={<GalleryListContainer/>}/>
       </Routes>
       <Footer/>
     </div>
