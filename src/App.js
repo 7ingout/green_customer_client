@@ -1,40 +1,42 @@
 import './App.css';
-import CustomerList from './components/CustomerList';
+// import CustomerList from './components/CustomerList';
 import DetailCustomer from './components/DetailCustomer';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import { Route, Routes } from "react-router-dom";
-import CreateCustomer from './components/CreateCustomer';
+// import CreateCustomer from './components/CreateCustomer';
 import EditCustomer from './components/EditCustomer';
 import CustomerContainer from './components/CustomerContainer';
 
 import CreateCustomerContainer from './components/CreateCustomerContainer';
-const customers = [
-  {
-    no: 1,
-    name: "고객",
-    phone: "01012345678",
-    birth: "19920206",
-    gender: "여성",
-    add: "울산시 남구"
-  },
-  {
-    no: 2,
-    name: "그린",
-    phone: "01012345678",
-    birth: "19920206",
-    gender: "남성",
-    add: "울산시 동구"
-  },
-  {
-    no: 3,
-    name: "kh",
-    phone: "01012345678",
-    birth: "19920206",
-    gender: "여성",
-    add: "울산시 남구"
-  }
-]
+import JoinForm from './components/JoinForm';
+import Login from './components/Login';
+// const customers = [
+//   {
+//     no: 1,
+//     name: "고객",
+//     phone: "01012345678",
+//     birth: "19920206",
+//     gender: "여성",
+//     add: "울산시 남구"
+//   },
+//   {
+//     no: 2,
+//     name: "그린",
+//     phone: "01012345678",
+//     birth: "19920206",
+//     gender: "남성",
+//     add: "울산시 동구"
+//   },
+//   {
+//     no: 3,
+//     name: "kh",
+//     phone: "01012345678",
+//     birth: "19920206",
+//     gender: "여성",
+//     add: "울산시 남구"
+//   }
+// ]
 function App() {
   return (
     <div className="App">
@@ -47,6 +49,8 @@ function App() {
         <Route path="/edit/:no" element={<EditCustomer/>} />
         {/* <Route path="/write" element={<CreateCustomer/>} /> */}
         <Route path="/write" element={<CreateCustomerContainer/>} />
+        <Route path="/join" element={<JoinForm />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
       <Footer/>
     </div>
